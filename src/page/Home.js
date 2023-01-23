@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Count from "../components/Count";
 
 function Home() {
   const [count, setCount] = useState({ sanoq: 0 });

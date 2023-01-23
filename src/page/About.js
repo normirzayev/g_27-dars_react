@@ -16,7 +16,8 @@ function About() {
       sanoq: 0,
       coty: "meva",
       narx: 75,
-      rangi:"blue"
+      rangi: "blue",
+      sana: "2023-01-03",
     },
     {
       id: 2,
@@ -27,7 +28,8 @@ function About() {
       sanoq: 0,
       coty: "poliz",
       narx: 35,
-      rangi:"green"
+      rangi: "green",
+      sana: "2023-01-10",
     },
     {
       id: 3,
@@ -37,7 +39,8 @@ function About() {
       sanoq: 0,
       coty: "meva",
       narx: 50,
-      rangi:"yellow"
+      rangi: "yellow",
+      sana: "2023-01-15",
     },
     {
       id: 4,
@@ -47,7 +50,8 @@ function About() {
       sanoq: 0,
       coty: "sabzavot",
       narx: 10,
-      rangi:"red"
+      rangi: "red",
+      sana: "2023-01-25",
     },
     {
       id: 5,
@@ -57,7 +61,8 @@ function About() {
       sanoq: 0,
       narx: 60,
       coty: "poliz",
-      rangi:"red"
+      rangi: "red",
+      sana: "2023-02-15",
     },
   ]);
 

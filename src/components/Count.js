@@ -11,6 +11,27 @@ let Count = ({ malumot, plusFunc, minusFunc }) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const [date, setDate] = useState({});
+  let handleDate = (e) => {
+    setDate({
+      ...date,
+      [e.target.name]: e.target.value,
+    });
+    console.log(date);
+  };
+
+  let to = new Date("2023-01-04");
+  let from = new Date("2023-01-11");
+  console.log(to < new Date("2023-01-05") && new Date("2023-03-05") < from);
+  console.log(
+    malumot.filter(
+      (val) =>
+        new Date(date?.to) < new Date(val.sana) &&
+        new Date(val.sana) < new Date(date?.from)
+    )
+  );
+
   return (
     <>
       <div className="cotyGory">
@@ -32,8 +53,8 @@ let Count = ({ malumot, plusFunc, minusFunc }) => {
         className="chekColor"
         style={{ display: "flex", gap: "20px", margin: "20px" }}
       >
-        {colorMassiv.map((chek) => (
-          <div>
+        {colorMassiv.map((chek, index) => (
+          <div key={index}>
             <input
               type="radio"
               name="color"
@@ -50,6 +71,12 @@ let Count = ({ malumot, plusFunc, minusFunc }) => {
       </div>
 
       <Range value={value} handleChange={handleChange} />
+
+      <label>to: </label>
+      <input onChange={handleDate} type="date" name="to" />
+      <label>from: </label>
+      <input onChange={handleDate} type="date" name="from" />
+
       <div className="cardBody">
         {malumot.filter((val) => {
           if (
@@ -64,7 +91,9 @@ let Count = ({ malumot, plusFunc, minusFunc }) => {
               .toLowerCase()
               .includes(colorData.trim().toLowerCase()) &&
             val.narx > value[0] &&
-            val.narx < value[1]
+            val.narx < value[1] &&
+            new Date(date?.to) < new Date(val.sana) &&
+            new Date(val.sana) < new Date(date?.from)
           ) {
             return val;
           }
@@ -83,7 +112,9 @@ let Count = ({ malumot, plusFunc, minusFunc }) => {
                     .toLowerCase()
                     .includes(colorData.trim().toLowerCase()) &&
                   val.narx > value[0] &&
-                  val.narx < value[1]
+                  val.narx < value[1] &&
+                  new Date(date?.to) < new Date(val.sana) &&
+                  new Date(val.sana) < new Date(date?.from)
                 ) {
                   return val;
                 }
@@ -104,6 +135,8 @@ let Count = ({ malumot, plusFunc, minusFunc }) => {
                     <h4> cotygory: {item.coty} </h4>
                     <h2> narxi: {item.narx}$ </h2>
                     <h2> rangi: {item.rangi} </h2>
+
+                    <h3> sana: {item.sana} </h3>
                   </div>
                   <div className="cartBtn">
                     <button onClick={() => plusFunc(item)}>plus</button>
