@@ -1,0 +1,110 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background-color: #212122;
+}
+
+.logo_hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo_hamburger h1 {
+    font-size: 40px;
+    text-transform: capitalize;
+    color: white;
+}
+
+.linklar {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    gap: 20px;
+    position: fixed;
+    background-color: red;
+    height: 100vh;
+    top: 0;
+    left: -100%;
+    width: 40%;
+    transition: 0.3s ease-in-out;
+}
+
+.linklarActive {
+    left: 0;
+}
+
+.linklar a {
+    color: white;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.hamburger {
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger:active span {
+    transform: scale(1.1);
+}
+
+.hamburger span {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.cardBody {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 300px;
+}
+
+.cartText {
+    padding: 15px;
+}
+
+.cartBtn {
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+img {
+    width: 100%;
+}
