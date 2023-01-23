@@ -1,4 +1,3 @@
-import { Slider } from "@mui/material";
 import { useState } from "react";
 import Range from "./Range";
 
@@ -12,13 +11,12 @@ let Count = ({ malumot, plusFunc, minusFunc }) => {
     setValue(newValue);
   };
 
-  const [date, setDate] = useState({});
+  const [date, setDate] = useState({ to: "2022-11-31", from: "2023-11-31" });
   let handleDate = (e) => {
     setDate({
       ...date,
       [e.target.name]: e.target.value,
     });
-    console.log(date);
   };
 
   let to = new Date("2023-01-04");
@@ -73,9 +71,9 @@ let Count = ({ malumot, plusFunc, minusFunc }) => {
       <Range value={value} handleChange={handleChange} />
 
       <label>to: </label>
-      <input onChange={handleDate} type="date" name="to" />
+      <input value={date.to} onChange={handleDate} type="date" name="to" />
       <label>from: </label>
-      <input onChange={handleDate} type="date" name="from" />
+      <input value={date.from} onChange={handleDate} type="date" name="from" />
 
       <div className="cardBody">
         {malumot.filter((val) => {
