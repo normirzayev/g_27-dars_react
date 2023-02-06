@@ -90,8 +90,8 @@ let Count = ({ malumot, plusFunc, minusFunc }) => {
               .includes(colorData.trim().toLowerCase()) &&
             val.narx > value[0] &&
             val.narx < value[1] &&
-            new Date(date?.to) < new Date(val.sana) &&
-            new Date(val.sana) < new Date(date?.from)
+            new Date(date?.to) <= new Date(val.sana) &&
+            new Date(val.sana) <= new Date(date?.from)
           ) {
             return val;
           }
@@ -111,8 +111,8 @@ let Count = ({ malumot, plusFunc, minusFunc }) => {
                     .includes(colorData.trim().toLowerCase()) &&
                   val.narx > value[0] &&
                   val.narx < value[1] &&
-                  new Date(date?.to) < new Date(val.sana) &&
-                  new Date(val.sana) < new Date(date?.from)
+                  new Date(date?.to) <= new Date(val.sana) &&
+                  new Date(val.sana) <= new Date(date?.from)
                 ) {
                   return val;
                 }
