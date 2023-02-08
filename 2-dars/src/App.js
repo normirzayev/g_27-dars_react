@@ -8,9 +8,9 @@ function App() {
   return (
     <>
       <Navbar />
-      <Header />
+      {/* <Header /> */}
       <Pages />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

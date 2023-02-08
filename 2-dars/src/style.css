@@ -28,3 +28,60 @@ a {
   color: blue;
   background-color: red;
 }
+
+.icon {
+  background-color: blue;
+  color: red;
+  font-size: 40px;
+  width: 100px;
+  height: 100px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  background-color: black;
+  padding: 20px 0;
+}
+.navbar h1 {
+  color: blue;
+  text-transform: capitalize;
+  font-size: 35px;
+}
+ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+}
+a {
+  padding: 10px;
+  text-transform: capitalize;
+  color: white !important;
+} 
+
+table {
+  border-collapse: collapse;
+}
+th,td {
+  padding: 10px ;
+  text-align: center;
+}
+button {
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  background-color: blue;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+button:nth-child(2) {
+  background-color: red;
+  margin-right: 0;
+  margin-left: 20px;
+}
+button:active {
+  transform: scale(0.9);
+}
