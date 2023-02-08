@@ -41,6 +41,7 @@ function Home() {
             <th>name</th>
             <th>narxi</th>
             <th>soni</th>
+            <th>summasi</th>
           </tr>
         </thead>
         <tbody>
@@ -48,15 +49,17 @@ function Home() {
             <tr key={index}>
               <th> {index + 1} </th>
               <td> {val.name} </td>
-              <td> {val.narx} </td>
+              <td> {val.narx}$ </td>
               <td>
                 <button onClick={() => plusFunc(val)}>plus</button> {val.soni}
                 <button onClick={() => minusFunc(val)}>minus</button>
               </td>
+              <td> {(val.soni * val.narx).toFixed(2)}$ </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <h1>totalPrice: {data.reduce((a, b) => a + b.soni * b.narx, 0)}$</h1>
     </>
   );
 }
