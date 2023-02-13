@@ -43,30 +43,36 @@ a {
   background-color: black;
   padding: 20px 0;
 }
+
 .navbar h1 {
   color: blue;
   text-transform: capitalize;
   font-size: 35px;
 }
+
 ul {
   display: flex;
   align-items: center;
   gap: 20px;
   list-style: none;
 }
+
 a {
   padding: 10px;
   text-transform: capitalize;
   color: white !important;
-} 
+}
 
 table {
   border-collapse: collapse;
 }
-th,td {
-  padding: 10px ;
+
+th,
+td {
+  padding: 10px;
   text-align: center;
 }
+
 button {
   border: none;
   outline: none;
@@ -77,11 +83,50 @@ button {
   cursor: pointer;
   margin-right: 20px;
 }
-button:nth-child(2) {
+
+.home button:nth-child(2) {
   background-color: red;
   margin-right: 0;
   margin-left: 20px;
 }
+
+.item_soni {
+  margin-right: 20px;
+}
 button:active {
   transform: scale(0.9);
+}
+
+
+/* about page malumot kiritish */
+.form_oyna form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 20px auto;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.aboutForm input {
+
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  border: 1px solid silver;
+  width: 100%;
+}
+
+.sendBtn {
+  margin: 0;
+}
+
+.aboutForm table {
+  margin: 20px auto;
+}
+
+img {
+  width: 100px;
+  height: 100px;
 }
