@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 function About() {
   const [tableBollean, setTableBollean] = useState(false);
@@ -6,8 +7,8 @@ function About() {
     soni: 0,
     like: false,
     id: "",
-    nomi: "",
-    haqida: "",
+    nomi: "eringijb",
+    haqida: "vreger",
     chegirma: "",
     narxi: "",
   });
@@ -62,6 +63,7 @@ function About() {
   ]);
   let handleTale = () => {
     setTableBollean(!tableBollean);
+    inputClear();
   };
 
   let handleInput = (e) => {
@@ -78,9 +80,41 @@ function About() {
   };
 
   let sendFunc = () => {
-    setMalumotlar([...malumotlar, { ...inputData, id: new Date().getTime() }]);
+    if (inputData.id === "") {
+      setMalumotlar([
+        ...malumotlar,
+        { ...inputData, id: new Date().getTime() },
+      ]);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "malumot qo'shildi",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+      inputClear();
+    } else {
+      Swal.fire({
+        title: "Do you want to save the changes?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Save",
+        denyButtonText: `Don't save`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          setMalumotlar(
+            malumotlar.map((val) => (val.id === inputData.id ? inputData : val))
+          );
+          inputClear();
+          Swal.fire("Saved!", "", "success");
+        } else if (result.isDenied) {
+          setTableBollean(true);
+          Swal.fire("Changes are not saved", "", "info");
+        }
+      });
+    }
     setTableBollean(false);
-    inputClear();
   };
 
   function plusFunc(id) {
@@ -102,8 +136,30 @@ function About() {
 
   // malumotlarni birini o'chirish
   function deleteFunc(id) {
-    setMalumotlar(malumotlar.filter((val) => val.id !== id));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "ha o'chirilsin",
+      cancelButtonText: "bekor qilish",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setMalumotlar(malumotlar.filter((val) => val.id !== id));
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
   }
+  function reset() {
+    setMalumotlar([]);
+  }
+
+  const handledit = (item) => {
+    setTableBollean(true);
+    setInputData(item);
+  };
 
   return (
     <>
@@ -148,7 +204,7 @@ function About() {
               />
               <input type="file" onInput={handleRasm} />
               <button className="sendBtn" type="button" onClick={sendFunc}>
-                send
+                {inputData.id === "" ? "send" : "save"}
               </button>
             </form>
           </div>
@@ -210,7 +266,12 @@ function About() {
                         </button>
                       </td>
                       <td>
-                        <button style={{ background: "green" }}>edit</button>
+                        <button
+                          style={{ background: "green" }}
+                          onClick={() => handledit(item)}
+                        >
+                          edit
+                        </button>
                       </td>
                     </tr>
                   ))
@@ -221,6 +282,7 @@ function About() {
                 )}
               </tbody>
             </table>
+            <button onClick={reset}>reset</button>
             <h1>
               totalPrice:
               {malumotlar

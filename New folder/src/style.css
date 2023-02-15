@@ -1,0 +1,10 @@
+a{
+  padding: 10px 15px;
+  text-decoration: none;
+  display: inline-block ;
+}
+
+.active{
+  background-color: blue;
+  color: white ;
+}
