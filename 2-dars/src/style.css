@@ -93,6 +93,7 @@ button {
 .item_soni {
   margin-right: 20px;
 }
+
 button:active {
   transform: scale(0.9);
 }
@@ -129,4 +130,24 @@ button:active {
 img {
   width: 100px;
   height: 100px;
+}
+
+.cart {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  top: -100%;
+  left: 0;
+  z-index: 10;
+}
+.cartActive {
+  top: 0;
+}
+.cartBody {
+  width: 80%;
+  background-color: white;
 }
