@@ -139,8 +139,10 @@ function Blog() {
           </span>
         </button>
 
-        <button onClick={cartBollFunc}> Cart  <span> {cart.length} </span> </button>
-
+        <button onClick={cartBollFunc}>
+          {" "}
+          Cart <span> {cart.length} </span>{" "}
+        </button>
         <Cart cart={cart} cartBool={cartBool} setCartBoll={setCartBoll} />
 
         <form className="aboutForm" onSubmit={handleSend}>
