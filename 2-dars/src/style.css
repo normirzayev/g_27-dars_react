@@ -156,3 +156,8 @@ img {
 .btnActive1 {
   background-color: red;
 }
+
+.box {
+  padding: 0 150px;
+  background-color: red;
+}

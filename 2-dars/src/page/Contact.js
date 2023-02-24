@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import AirIcon from "@mui/icons-material/Air";
+import Slider1 from "../component/Slider1";
 function Contact() {
   // let text = document.querySelector('h1')
 
@@ -50,6 +51,10 @@ function Contact() {
           {item}
         </button>
       ))}
+
+      <div className="box">
+        <Slider1 />
+      </div>
     </>
   );
 }
