@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 
 function About() {
   const [tableBollean, setTableBollean] = useState(false);
+  const [search, setSearch] = useState("");
   const [inputData, setInputData] = useState({
     soni: 0,
     like: false,
@@ -171,6 +172,17 @@ function About() {
           {tableBollean ? "table" : "form"}
         </button>
 
+        <div>
+          <input
+            style={{ width: "300px", margin: "10px" }}
+            type="text"
+            placeholder="search..."
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
+        </div>
+
         {tableBollean ? (
           <div className="form_oyna">
             <form>
@@ -225,56 +237,91 @@ function About() {
                 </tr>
               </thead>
               <tbody>
-                {malumotlar.length > 0 ? (
-                  malumotlar.map((item, index) => (
-                    <tr key={index}>
-                      <th> {index + 1} </th>
-                      <td> {item.nomi} </td>
-                      <td> {item.haqida} </td>
-                      <td>
-                        <del>{item.narxi}$</del>
-                        {(
-                          item.narxi -
-                          (item.narxi / 100) * item.chegirma
-                        ).toFixed(2)}
-                        $
-                      </td>
-                      <td>
-                        {(
-                          (item.narxi - (item.narxi / 100) * item.chegirma) *
-                          item.soni
-                        ).toFixed(2)}
-                        $
-                      </td>
-                      <td> {item.chegirma}% </td>
-                      <td>
-                        <img src={item.rasm} alt="nomi" />
-                      </td>
-                      <td>
-                        <button onClick={() => plusFunc(item.id)}>plus</button>
-                        <span className="item_soni">{item.soni}</span>
-                        <button onClick={() => minusFunc(item.id)}>
-                          minus
-                        </button>
-                      </td>
-                      <td>
-                        <button
-                          style={{ background: "red" }}
-                          onClick={() => deleteFunc(item.id)}
-                        >
-                          delete
-                        </button>
-                      </td>
-                      <td>
-                        <button
-                          style={{ background: "green" }}
-                          onClick={() => handledit(item)}
-                        >
-                          edit
-                        </button>
-                      </td>
-                    </tr>
-                  ))
+                {malumotlar.length > 0 &&
+                malumotlar.filter((obj) => {
+                  if (search === "") {
+                    return obj;
+                  } else if (
+                    obj.nomi
+                      .toLowerCase()
+                      .includes(search.toLowerCase().trim()) ||
+                    obj.haqida
+                      .toLowerCase()
+                      .includes(search.toLowerCase().trim()) ||
+                    obj.narxi.toString().includes(search.toLowerCase().trim())
+                  ) {
+                    return obj;
+                  }
+                }).length > 0 ? (
+                  malumotlar
+                    .filter((obj) => {
+                      if (search === "") {
+                        return obj;
+                      } else if (
+                        obj.nomi
+                          .toLowerCase()
+                          .includes(search.toLowerCase().trim()) ||
+                        obj.haqida
+                          .toLowerCase()
+                          .includes(search.toLowerCase().trim()) ||
+                        obj.narxi
+                          .toString()
+                          .includes(search.toLowerCase().trim())
+                      ) {
+                        return obj;
+                      }
+                    })
+                    .map((item, index) => (
+                      <tr key={index}>
+                        <th> {index + 1} </th>
+                        <td> {item.nomi} </td>
+                        <td> {item.haqida} </td>
+                        <td>
+                          <del>{item.narxi}$</del>
+                          {(
+                            item.narxi -
+                            (item.narxi / 100) * item.chegirma
+                          ).toFixed(2)}
+                          $
+                        </td>
+                        <td>
+                          {(
+                            (item.narxi - (item.narxi / 100) * item.chegirma) *
+                            item.soni
+                          ).toFixed(2)}
+                          $
+                        </td>
+                        <td> {item.chegirma}% </td>
+                        <td>
+                          <img src={item.rasm} alt="nomi" />
+                        </td>
+                        <td>
+                          <button onClick={() => plusFunc(item.id)}>
+                            plus
+                          </button>
+                          <span className="item_soni">{item.soni}</span>
+                          <button onClick={() => minusFunc(item.id)}>
+                            minus
+                          </button>
+                        </td>
+                        <td>
+                          <button
+                            style={{ background: "red" }}
+                            onClick={() => deleteFunc(item.id)}
+                          >
+                            delete
+                          </button>
+                        </td>
+                        <td>
+                          <button
+                            style={{ background: "green" }}
+                            onClick={() => handledit(item)}
+                          >
+                            edit
+                          </button>
+                        </td>
+                      </tr>
+                    ))
                 ) : (
                   <tr>
                     <td colSpan={10}> no Data... </td>

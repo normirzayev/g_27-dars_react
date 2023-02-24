@@ -151,3 +151,8 @@ img {
   width: 80%;
   background-color: white;
 }
+
+
+.btnActive1 {
+  background-color: red;
+}
