@@ -1,6 +1,9 @@
-import { useState } from "react";
-
+import { useContext, useState } from "react";
+import { DataContext } from "../context/Context";
+import React from 'react';
 function Home() {
+  let { m } = useContext(DataContext);
+
   const [data, setData] = useState([
     { id: 1, name: "panki", narx: 2, soni: 0 },
     { id: 2, name: "sprite", narx: 1.5, soni: 0 },
@@ -34,6 +37,8 @@ function Home() {
 
   return (
     <>
+      <h1>{m}</h1>
+
       <div className="home">
         <table border={1}>
           <thead>

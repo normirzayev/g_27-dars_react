@@ -2,6 +2,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 
 function About() {
+  let filterCatigory = ["", "poliz", "meva"];
   const [tableBollean, setTableBollean] = useState(false);
   const [search, setSearch] = useState("");
   const [inputData, setInputData] = useState({
@@ -33,6 +34,7 @@ function About() {
       chegirma: 10,
       like: false,
       soni: 0,
+      catigory: "poliz",
     },
     {
       id: 2,
@@ -41,6 +43,7 @@ function About() {
       narxi: 40,
       chegirma: 13,
       like: false,
+      catigory: "poliz",
       soni: 0,
     },
     {
@@ -51,6 +54,7 @@ function About() {
       chegirma: 15,
       like: false,
       soni: 0,
+      catigory: "meva",
     },
     {
       id: 4,
@@ -59,9 +63,11 @@ function About() {
       narxi: 80,
       chegirma: 8,
       like: false,
+      catigory: "meva",
       soni: 0,
     },
   ]);
+  const [filterCatigoryState, setFilterCatigoryState] = useState("");
   let handleTale = () => {
     setTableBollean(!tableBollean);
     inputClear();
@@ -162,6 +168,10 @@ function About() {
     setInputData(item);
   };
 
+  // filter catigory
+  let filterCatigoryFunc = (item) => {
+    setFilterCatigoryState(item);
+  };
   return (
     <>
       <div className="aboutForm">
@@ -181,6 +191,16 @@ function About() {
               setSearch(e.target.value);
             }}
           />
+        </div>
+
+        <div>
+          {filterCatigory.map((item, index) => (
+            <div key={index}>
+              <button onClick={() => filterCatigoryFunc(item)}>
+                {item === "" ? "all" : item}
+              </button>
+            </div>
+          ))}
         </div>
 
         {tableBollean ? (
@@ -237,36 +257,40 @@ function About() {
                 </tr>
               </thead>
               <tbody>
-                {malumotlar.length > 0 &&
-                malumotlar.filter((obj) => {
-                  if (search === "") {
-                    return obj;
-                  } else if (
-                    obj.nomi
-                      .toLowerCase()
-                      .includes(search.toLowerCase().trim()) ||
-                    obj.haqida
-                      .toLowerCase()
-                      .includes(search.toLowerCase().trim()) ||
-                    obj.narxi.toString().includes(search.toLowerCase().trim())
-                  ) {
-                    return obj;
-                  }
-                }).length > 0 ? (
+                {
+                  // malumotlar.length > 0 &&
+                  // malumotlar.filter((obj) => {
+                  //   if (search === "") {
+                  //     return obj;
+                  //   } else if (
+                  //     obj.nomi
+                  //       .toLowerCase()
+                  //       .includes(search.toLowerCase().trim()) ||
+                  //     obj.haqida
+                  //       .toLowerCase()
+                  //       .includes(search.toLowerCase().trim()) ||
+                  //     obj.narxi.toString().includes(search.toLowerCase().trim())
+                  //   ) {
+                  //     return obj;
+                  //   } else if (obj.catigory.includes(filterCatigory)) {
+                  //     return obj;
+                  //   }
+                  // }).length > 0 ? (
                   malumotlar
                     .filter((obj) => {
                       if (search === "") {
                         return obj;
                       } else if (
-                        obj.nomi
+                        (obj.nomi
                           .toLowerCase()
                           .includes(search.toLowerCase().trim()) ||
-                        obj.haqida
-                          .toLowerCase()
-                          .includes(search.toLowerCase().trim()) ||
-                        obj.narxi
-                          .toString()
-                          .includes(search.toLowerCase().trim())
+                          obj.haqida
+                            .toLowerCase()
+                            .includes(search.toLowerCase().trim()) ||
+                          obj.narxi
+                            .toString()
+                            .includes(search.toLowerCase().trim())) &&
+                        obj.catigory.includes(filterCatigoryState)
                       ) {
                         return obj;
                       }
@@ -322,11 +346,13 @@ function About() {
                         </td>
                       </tr>
                     ))
-                ) : (
-                  <tr>
-                    <td colSpan={10}> no Data... </td>
-                  </tr>
-                )}
+                  // )
+                  //  : (
+                  //   <tr>
+                  //     <td colSpan={10}> no Data... </td>
+                  //   </tr>
+                  // )
+                }
               </tbody>
             </table>
             <button onClick={reset}>reset</button>

@@ -5,11 +5,14 @@ import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import DataContext  from "./context/Context";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <DataContext>
+        <App />
+      </DataContext>
     </Router>
   </React.StrictMode>
 );

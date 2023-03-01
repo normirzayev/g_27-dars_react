@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LikeComponent from "../component/LikeComponent";
 import Cart from "../component/cart";
 // import { Button } from "@mui/material";
 import { Button, Table } from "reactstrap";
+import { DataContext } from "../context/Context";
 function Blog() {
+  const { simple } = useContext(DataContext);
+
   const [malumotlar, setMalumotlar] = useState([
     {
       id: 1,
@@ -140,6 +143,8 @@ function Blog() {
           </span>
         </button>
 
+        <button onClick={simple}>context btn</button>
+
         <button onClick={cartBollFunc}>
           {" "}
           Cart <span> {cart.length} </span>{" "}
@@ -267,7 +272,7 @@ function Blog() {
       <LikeComponent data={malumotlar} />
 
       <Button color="success"> click bootstrap </Button>
-      <Table className="container" >
+      <Table className="container">
         <thead>
           <tr>
             <th>#</th>
