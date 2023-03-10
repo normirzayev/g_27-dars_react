@@ -58,7 +58,7 @@ let Count = ({ malumot, plusFunc, minusFunc }) => {
               name="color"
               onClick={() => setColorData(chek)}
               style={{
-                boxShadow: chek === colorData ? `0 0 10px ${colorData} ` : "",
+                boxShadow: chek === colorData ? `0 0 10px ${colorData}` : "",
                 width: "40px",
                 height: "40px",
               }}

@@ -2,8 +2,7 @@ import { useContext, useState } from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LikeComponent from "../component/LikeComponent";
 import Cart from "../component/cart";
-// import { Button } from "@mui/material";
-import { Button, Table } from "reactstrap";
+import { Button, Table } from "@mui/material";
 import { DataContext } from "../context/Context";
 function Blog() {
   const { simple } = useContext(DataContext);
@@ -146,8 +145,7 @@ function Blog() {
         <button onClick={simple}>context btn</button>
 
         <button onClick={cartBollFunc}>
-          {" "}
-          Cart <span> {cart.length} </span>{" "}
+          Cart <span> {cart.length} </span>
         </button>
         <Cart cart={cart} cartBool={cartBool} setCartBoll={setCartBoll} />
 

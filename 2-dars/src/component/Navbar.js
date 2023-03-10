@@ -19,6 +19,9 @@ function Navbar() {
           <li>
             <NavLink to={"/contact"}>contact</NavLink>
           </li>
+          <li>
+            <NavLink to={"/localData"}>localData</NavLink>
+          </li>
         </ul>
       </div>
     </>

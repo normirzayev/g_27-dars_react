@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
-
 function About() {
   let filterCatigory = ["", "poliz", "meva"];
   const [tableBollean, setTableBollean] = useState(false);

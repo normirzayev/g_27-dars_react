@@ -1,7 +1,5 @@
 import React from "react";
-
 export const DataContext = React.createContext();
-
 export default function ContextProvider({ children }) {
   let m = "salom";
   let simple = () => {

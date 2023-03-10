@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import AcUnitIcon from "@mui/icons-material/AcUnit";
-import AirIcon from "@mui/icons-material/Air";
+// import AcUnitIcon from "@mui/icons-material/AcUnit";
+// import AirIcon from "@mui/icons-material/Air";
 import Slider1 from "../component/Slider1";
 function Contact() {
   // let text = document.querySelector('h1')

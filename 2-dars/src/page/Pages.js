@@ -5,6 +5,7 @@ import About from "./About";
 import Blog from "./Blog";
 import Contact from "./Contact";
 import { Route, Routes } from "react-router-dom";
+import LocalST_Page from "./LocalST_Page";
 function Pages() {
   return (
     <>
@@ -15,6 +16,7 @@ function Pages() {
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/setting" element={<Setting />} />
+        <Route path="/localData" element={<LocalST_Page />} />
       </Routes>
     </>
   );

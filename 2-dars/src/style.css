@@ -144,9 +144,11 @@ img {
   left: 0;
   z-index: 10;
 }
+
 .cartActive {
   top: 0;
 }
+
 .cartBody {
   width: 80%;
   background-color: white;
@@ -160,4 +162,40 @@ img {
 .box {
   padding: 0 150px;
   background-color: red;
+}
+
+
+.localPage form {
+  width: 40%;
+  box-shadow: 0 0 10px silver;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.localPage form input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  outline: none;
+  border: none;
+  border: 1px solid silver;
+  border-radius: 5px;
+}
+
+.localPage form input:focus {
+  outline: 2px solid blue;
+}
+
+.localPage form button {
+  width: 150px;
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+
+.localPage form button:active {
+  transform: scale(0.95);
 }
