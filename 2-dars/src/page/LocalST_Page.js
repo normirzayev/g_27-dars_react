@@ -1,101 +1,50 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { DataContext } from "../context/Context";
 
 function LocalST_Page() {
-  const [localData, setLocalData] = useState(
-    JSON.parse(localStorage.getItem("localUSer")) || []
-  );
-
-  function localRefresh() {
-    setLocalData(JSON.parse(localStorage.getItem("localUSer")) || []);
-  }
-
-  const [inputData, setInputData] = useState({
-    id: "",
-    name: "",
-    surname: "",
-    email: "",
-    password: "",
-    rasm: "",
-  });
-
-  function inputClear() {
-    setInputData({
-      id: "",
-      name: "",
-      surname: "",
-      email: "",
-      password: "",
-      rasm: "",
-    });
-  }
-
-  let getInputData = (e) => {
-    let { name, value } = e.target;
-    setInputData({
-      ...inputData,
-      [name]: value,
-    });
-  };
-
-  let getFileData = (e) => {
-    setInputData({
-      ...inputData,
-      rasm: URL.createObjectURL(e.target.files[0]),
-    });
-  };
-
-  let sendData = () => {
-    if (localStorage.getItem("localUSer")) {
-      localStorage.setItem(
-        "localUSer",
-        JSON.stringify([
-          ...localData,
-          { ...inputData, id: new Date().getTime() },
-        ])
-      );
-    } else {
-      localStorage.setItem(
-        "localUSer",
-        JSON.stringify([{ ...inputData, id: new Date().getTime() }])
-      );
-    }
-    inputClear();
-    localRefresh();
-  };
-
+  const { getInputData, inputData, sendData } = useContext(DataContext);
+  let formLocal = useNavigate();
   return (
     <>
       <div className="localPage">
+        <button onClick={() => formLocal("/localMap")}> local table </button>
         <form>
           <input
             type="text"
             placeholder="name"
             name="name"
             onInput={getInputData}
-            value={inputData.name}
+            value={inputData?.name}
           />
           <input
             type="text"
             placeholder="surName"
             name="surname"
             onInput={getInputData}
-            value={inputData.surname}
+            value={inputData?.surname}
           />
           <input
             type="email"
             placeholder="email"
             name="email"
             onInput={getInputData}
-            value={inputData.email}
+            value={inputData?.email}
           />
           <input
             type="password"
             placeholder="password"
             name="password"
             onInput={getInputData}
-            value={inputData.password}
+            value={inputData?.password}
           />
-          <input type="file" onInput={getFileData} />
+          <input
+            type="text"
+            placeholder="image url... "
+            onInput={getInputData}
+            value={inputData?.rasm}
+            name={"rasm"}
+          />
           <button type="button" onClick={sendData}>
             yuborish
           </button>

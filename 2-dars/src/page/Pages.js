@@ -6,6 +6,7 @@ import Blog from "./Blog";
 import Contact from "./Contact";
 import { Route, Routes } from "react-router-dom";
 import LocalST_Page from "./LocalST_Page";
+import { LocalMap } from "./LocalMap";
 function Pages() {
   return (
     <>
@@ -17,6 +18,7 @@ function Pages() {
         <Route path="*" element={<NotFound />} />
         <Route path="/setting" element={<Setting />} />
         <Route path="/localData" element={<LocalST_Page />} />
+        <Route path="/localMap" element={<LocalMap />} />
       </Routes>
     </>
   );
